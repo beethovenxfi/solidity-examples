@@ -144,7 +144,8 @@ module.exports = async function (taskArgs, hre) {
 
     // format the put request
     const putObj = formatPutObj(baseContract, contractBuildInfo, contractDeployment, taskArgs, hre)
-    const response = await fetch(`${BLOCK_EXPLORER_API_URL[hre.network.name]}`, {
+    console.log(`${BLOCK_EXPLORER_API_URL[hre.network.name]}`)
+    const response = await fetch(`${BLOCK_EXPLORER_API_URL[hre.network.name]}?apikey=${process.env.ETHERSCAN_API_KEY}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
