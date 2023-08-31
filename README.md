@@ -4,6 +4,22 @@
 
 ---
 
+# Deployment of Beets TestToken to goerli and optimism-goerli
+
+```
+yarn hardhat --network goerli deploy --tags BeetsTestProxyOFTV2
+yarn hardhat --network goerli verifyContract --contract BeetsTestProxyOFTV2
+
+yarn hardhat --network optimism-goerli deploy --tags BeetsTestOFTV2
+yarn hardhat --network goerli verifyContract --contract BeetsTestOFTV2
+
+yarn hardhat --network goerli setTrustedRemote --target-network optimism-goerli --local-contract BeetsTestProxyOFTV2 --remote-contract BeetsTestOFTV2
+yarn hardhat --network optimism-goerli setTrustedRemote --target-network goerli --local-contract BeetsTestOFTV2 --remote-contract BeetsTestProxyOFTV2
+
+yarn hardhat --network goerli oftv2Send --target-network optimism-goerli --qty 50 --local-contract BeetsTestProxyOFTV2 --remote-contract BeetsTestOFTV2
+yarn hardhat --network optimism-goerli oftv2Send --target-network goerli --qty 25 --local-contract BeetsTestOFTV2 --remote-contract BeetsTestProxyOFTV2
+```
+
 # LayerZero Omnichain Contract Examples
 
 * Formal audit(s) (May 21, 2022) can be found in /audit
