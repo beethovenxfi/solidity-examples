@@ -20,6 +20,12 @@ yarn hardhat --network goerli oftv2Send --target-network optimism-goerli --qty 5
 yarn hardhat --network optimism-goerli oftv2Send --target-network goerli --qty 25 --local-contract BeetsTestOFTV2 --remote-contract BeetsTestProxyOFTV2
 ```
 
+Addresses:
+Beets: https://goerli.etherscan.io/address/0x83cd2803e971d10d18aac3a8af4f62bb54a4a266#readContract
+Beets Proxy: https://goerli.etherscan.io/address/0x3e4d7CeA259231c68A31dE6e26171175edE71303#readContract
+Beets OP goerli: https://goerli-optimism.etherscan.io/address/0x67af5d428d38c5176a286a2371df691cdd914fb8
+
+
 # LayerZero Omnichain Contract Examples
 
 * Formal audit(s) (May 21, 2022) can be found in /audit
