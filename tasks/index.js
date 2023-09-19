@@ -195,3 +195,8 @@ task("isStoredPayload", "check if stored payload", require("./isStoredPayload"))
     .addParam("desAddress", "")
     .addOptionalParam("payload", "")
     .addOptionalParam("clear", "", false, types.boolean)
+
+task("approve", "approve erc20 spending", require("./approve"))
+    .addParam("token", "")
+    .addParam("qty", "")
+    .addParam("spender", "")

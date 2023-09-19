@@ -10,8 +10,10 @@
 yarn hardhat --network goerli deploy --tags BeetsTestProxyOFTV2
 yarn hardhat --network goerli verifyContract --contract BeetsTestProxyOFTV2
 
+// make sure you have the correct etherscan api key set in hardhat.config.js for the corresponding chain when verifying
+
 yarn hardhat --network optimism-goerli deploy --tags BeetsTestOFTV2
-yarn hardhat --network goerli verifyContract --contract BeetsTestOFTV2
+yarn hardhat --network optimism-goerli verifyContract --contract BeetsTestOFTV2
 
 yarn hardhat --network goerli setTrustedRemote --target-network optimism-goerli --local-contract BeetsTestProxyOFTV2 --remote-contract BeetsTestOFTV2
 yarn hardhat --network optimism-goerli setTrustedRemote --target-network goerli --local-contract BeetsTestOFTV2 --remote-contract BeetsTestProxyOFTV2
@@ -25,6 +27,68 @@ Beets: https://goerli.etherscan.io/address/0x83cd2803e971d10d18aac3a8af4f62bb54a
 Beets Proxy: https://goerli.etherscan.io/address/0x3e4d7CeA259231c68A31dE6e26171175edE71303#readContract
 Beets OP goerli: https://goerli-optimism.etherscan.io/address/0x67af5d428d38c5176a286a2371df691cdd914fb8
 
+# Deployment of Beets OFTProxy to Fantom and BEETS OFT to Optimism
+
+```
+yarn hardhat --network fantom deploy --tags BeetsProxyOFTV2
+yarn hardhat --network fantom verifyContract --contract BeetsProxyOFTV2
+
+// make sure you have the correct etherscan api key set in .env for the corresponding chain when verifying
+
+yarn hardhat --network optimism deploy --tags BeetsOFTV2
+yarn hardhat --network optimism verifyContract --contract BeetsOFTV2
+
+yarn hardhat --network fantom setTrustedRemote --target-network optimism --local-contract BeetsProxyOFTV2 --remote-contract BeetsOFTV2
+yarn hardhat --network optimism setTrustedRemote --target-network fantom --local-contract BeetsOFTV2 --remote-contract BeetsProxyOFTV2
+
+yarn hardhat --network fantom approve --token 0xF24Bcf4d1e507740041C9cFd2DddB29585aDCe1e --qty 10 --spender 0x8d038dA833b154EBcFB7965a9eE7C4Ad72671b21
+yarn hardhat --network fantom oftv2Send --target-network optimism --qty 10 --local-contract BeetsProxyOFTV2 --remote-contract BeetsOFTV2
+
+yarn hardhat --network optimism oftv2Send --target-network fantom --qty 5 --local-contract BeetsOFTV2 --remote-contract BeetsProxyOFTV2
+
+setUseCustomAdapterParams on the ProxyOFT Contract to true (directly via etherscan)
+https://ftmscan.com/tx/0x066fe65f8c829d5a98ec2fb31f474b7002a2da1147b22e9963da251fb402588a
+https://optimistic.etherscan.io/tx/0xce062f2c0e416d2ea72599ade355832480c095f26ff5f2cf084a78d262a3a645
+
+setMinDstGas (directly on etherscan)
+dstChain: 111 (OP)
+type: 0 (send)
+minGas: 110000
+https://ftmscan.com/tx/0x0a8f813e4dadb41e3dc29265ea707d750fea6db9f1dceef636bed757254137e5
+
+dstChain: 111 (OP)
+type: 1 (send and call)
+minGas: 110000
+https://ftmscan.com/tx/0x08176bbfb1c21d70d96cbfde7e58c713d49f369b1afe6df5898374e248c2b264
+
+setMinDstGas (directly on etherscan)
+dstChain: 112 (FTM)
+type: 0 (send)
+minGas: 110000
+https://optimistic.etherscan.io/tx/0x4479be4e40127be3e8948684a42fb95d91c5f342c44735cfe5d72e37d7920656
+
+dstChain: 112 (FT)
+type: 1 (send and call)
+minGas: 110000
+https://optimistic.etherscan.io/tx/0xd0a4824acf810b8eff7b21b3c7beaa4c17151f1bc657a3c2746de4dd79660c93
+
+```
+
+Addresses:
+Beets on Fantom: https://ftmscan.com/address/0xF24Bcf4d1e507740041C9cFd2DddB29585aDCe1e
+LZ Fantom endpoint: https://ftmscan.com/address/0xb6319cC6c8c27A8F5dAF0dD3DF91EA35C4720dd7#code
+
+LZ Optimism endpoint: https://optimistic.etherscan.io/address/0x3c2269811836af69497E5F486A85D7316753cf62
+
+BeetsProxyOFT on Fantom: https://ftmscan.com/address/0x8d038dA833b154EBcFB7965a9eE7C4Ad72671b21
+BeetsOFT on Optimism: https://optimistic.etherscan.io/address/0xb4Bc46bc6cB217B59ea8F4530BaE26Bf69F677f0
+
+Txns:
+Sending Beets from Fantom: https://ftmscan.com/tx/0xe21c9e4384ed9179b32a55d79e57fd4856fec773c9deb37431e337850d4c03ac
+Receiving Beets on OP: https://optimistic.etherscan.io/tx/0x7c7680428b0ec38597bde1791e23fb5d0f6896aac4380dab0f831d7f8d3eabfc
+
+Sending Beets from OP: https://optimistic.etherscan.io/tx/0x941d94268f29805d14383711afeabc9e11f63fca530c99c3f5265d0267e4d6d4
+Receiving Beets on Fantom: https://ftmscan.com/tx/0xb64d009bf16c6d5ecc4b8fc616837a4bec9c341856d6c6b549f8e73ec77cdf44
 
 # LayerZero Omnichain Contract Examples
 
