@@ -106,10 +106,28 @@ module.exports = {
   },
 
   etherscan: {
-      apiKey: "53FY5HSCDMHYXX4CSNAHRQQ5JB4U1MMPIE",
+    apiKey: {
+      sonic: "sonic", // apiKey is not required, just set a placeholder
+    },
+          customChains: [
+        {
+          network: "sonic",
+          chainId: 146,
+          urls: {
+            apiURL: "https://api.routescan.io/v2/network/mainnet/evm/146/etherscan",
+            browserURL: "https://scan.soniclabs.com"
+          }
+        }
+      ]
   },
 
   networks: {
+    sonic: {
+      url: 'https://rpc.soniclabs.com',
+      accounts,
+      chainId: 146,
+      // saveDeployments: true,
+  },
     ethereum: {
       url: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161", // public infura endpoint
       chainId: 1,

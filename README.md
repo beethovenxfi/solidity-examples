@@ -79,9 +79,11 @@ Beets on Fantom: https://ftmscan.com/address/0xF24Bcf4d1e507740041C9cFd2DddB2958
 LZ Fantom endpoint: https://ftmscan.com/address/0xb6319cC6c8c27A8F5dAF0dD3DF91EA35C4720dd7#code
 
 LZ Optimism endpoint: https://optimistic.etherscan.io/address/0x3c2269811836af69497E5F486A85D7316753cf62
+LZ Sonic endpoint: https://explorer.soniclabs.com/address/0xb6319cC6c8c27A8F5dAF0dD3DF91EA35C4720dd7
 
 BeetsProxyOFT on Fantom: https://ftmscan.com/address/0x8d038dA833b154EBcFB7965a9eE7C4Ad72671b21
 BeetsOFT on Optimism: https://optimistic.etherscan.io/address/0xb4Bc46bc6cB217B59ea8F4530BaE26Bf69F677f0
+BeetsOFT on Sonic https://146.routescan.io/address/0x1E5fe95fB90ac0530F581C617272cd0864626795/contract/146/writeContract
 
 Txns:
 Sending Beets from Fantom: https://ftmscan.com/tx/0xe21c9e4384ed9179b32a55d79e57fd4856fec773c9deb37431e337850d4c03ac

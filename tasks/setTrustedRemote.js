@@ -32,6 +32,12 @@ module.exports = async function (taskArgs, hre) {
         [remoteAddress, localContractInstance.address]
     )
 
+    console.log(remoteChainId)
+    if(!remoteChainId){
+        remote
+    }
+    console.log(remoteAndLocal)
+
     // check if pathway is already set
     const isTrustedRemoteSet = await localContractInstance.isTrustedRemote(remoteChainId, remoteAndLocal);
 
